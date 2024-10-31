@@ -27,7 +27,7 @@ const ChatInterface = () => {
     return messages.slice(-4); // Keep only the last 4 messages
   }
   
-  const unrelatedKeywords = ['monster truck', 'toy sales', 'car race', 'alien', 'sports game'];
+  
   async function sendMessage() {
 
     if (message === '') return;
@@ -36,19 +36,6 @@ const ChatInterface = () => {
       setChatHistory((prev) => limitChatHistory([...prev, noDataMessage]));
       return;
     }
-    const isUnrelated = unrelatedKeywords.some((keyword) =>
-      message.toLowerCase().includes(keyword)
-  );
-
-  if (isUnrelated) {
-      // If the message is unrelated, show a warning bot message
-      const errorResponse = {
-          type: 'bot',
-          content: "Please enter something relevant to the dataset.",
-      };
-      setChatHistory((prev) => limitChatHistory([...prev, errorResponse]));
-      setMessage(''); // Clear input
-      return;
   }
 
 
